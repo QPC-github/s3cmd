@@ -7,7 +7,7 @@ apt-builder-deps:
 	true
 
 apt-builder-build:
-	debuild
+	debuild binary
 
 release:
 	python setup.py register sdist upload
