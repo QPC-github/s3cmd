@@ -1385,7 +1385,9 @@ def gpg_command(command, passphrase = ""):
     return p_exitcode
 
 def gpg_encrypt(filename):
-    tmp_filename = Utils.mktmpfile()
+    tmp_fd, tmp_filename = tempfile.mkstemp()
+    os.close(tmp_fd)
+
     args = {
         "gpg_command" : cfg.gpg_command,
         "passphrase_fd" : "0",
@@ -1398,7 +1400,9 @@ def gpg_encrypt(filename):
     return (code, tmp_filename, "gpg")
 
 def gpg_decrypt(filename, gpgenc_header = "", in_place = True):
-    tmp_filename = Utils.mktmpfile(filename)
+    tmp_fd, tmp_filename = tempfile.mkstemp()
+    os.close(tmp_fd)
+
     args = {
         "gpg_command" : cfg.gpg_command,
         "passphrase_fd" : "0",
@@ -1500,7 +1504,8 @@ def run_configure(config_file, args):
                             raise Exception("Path to GPG program not set")
                         if not os.path.isfile(getattr(cfg, "gpg_command")):
                             raise Exception("GPG program not found")
-                        filename = Utils.mktmpfile()
+                        fd, filename = tempfile.mkstemp()
+                        os.close(fd)
                         f = open(filename, "w")
                         f.write(os.sys.copyright)
                         f.close()

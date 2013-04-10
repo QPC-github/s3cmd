@@ -3,10 +3,12 @@
 ##         http://www.logix.cz/michal
 ## License: GPL Version 2
 
+import os
 import sys
 import time
 import httplib
 import random
+import tempfile
 from datetime import datetime
 from logging import debug, info, warning, error
 
@@ -445,7 +447,8 @@ class CloudFront(object):
         cfuri = self.get_dist_name_for_bucket(uri)
         if len(paths) > 999:
             try:
-                tmp_filename = Utils.mktmpfile()
+                tmp_fd, tmp_filename = tempfile.mkstemp()
+                os.close(tmp_fd)
                 f = open(tmp_filename, "w")
                 f.write("\n".join(paths)+"\n")
                 f.close()

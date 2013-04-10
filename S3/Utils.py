@@ -199,33 +199,6 @@ def rndstr(len):
     return retval
 __all__.append("rndstr")
 
-def mktmpsomething(prefix, randchars, createfunc):
-    old_umask = os.umask(0077)
-    tries = 5
-    while tries > 0:
-        dirname = prefix + rndstr(randchars)
-        try:
-            createfunc(dirname)
-            break
-        except OSError, e:
-            if e.errno != errno.EEXIST:
-                os.umask(old_umask)
-                raise
-        tries -= 1
-
-    os.umask(old_umask)
-    return dirname
-__all__.append("mktmpsomething")
-
-def mktmpdir(prefix = "/tmp/tmpdir-", randchars = 10):
-    return mktmpsomething(prefix, randchars, os.mkdir)
-__all__.append("mktmpdir")
-
-def mktmpfile(prefix = "/tmp/tmpfile-", randchars = 20):
-    createfunc = lambda filename : os.close(os.open(filename, os.O_CREAT | os.O_EXCL))
-    return mktmpsomething(prefix, randchars, createfunc)
-__all__.append("mktmpfile")
-
 def hash_file_md5(filename):
     h = md5()
     f = open(filename, "rb")
