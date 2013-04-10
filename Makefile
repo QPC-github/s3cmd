@@ -1,5 +1,8 @@
 SHELL := /bin/bash
 
+apt-builder-fetch:
+	true
+
 all:
 	debuild
 
