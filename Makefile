@@ -6,7 +6,7 @@ apt-builder-fetch:
 apt-builder-deps:
 	true
 
-all:
+apt-builder-build:
 	debuild
 
 release:
