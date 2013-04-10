@@ -3,6 +3,9 @@ SHELL := /bin/bash
 apt-builder-fetch:
 	true
 
+apt-builder-deps:
+	true
+
 all:
 	debuild
 
