@@ -2,7 +2,7 @@ s3cmd (1.5.0-a3) unstable; urgency=low
 
   * Initial Shopify build.
 
- -- Kenneth Vestergaard <kenneth.vestergaard@shopify.com> Wed, 10 Apr 2013 12:22:00 +0200
+ -- Kenneth Vestergaard <kenneth.vestergaard@shopify.com>  Wed, 10 Apr 2013 12:22:00 +0200
 
 s3cmd (1.0.0-4) stable; urgency=low
 
