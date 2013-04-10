@@ -1,3 +1,9 @@
+s3cmd (1.5.0-a3-1) unstable; urgency=low
+
+  * Respect TMPDIR when GPG-encrypting.
+
+ -- Kenneth Vestergaard <kenneth.vestergaard@shopify.com>  Wed, 10 Apr 2013 14:47:00 +0200
+
 s3cmd (1.5.0-a3) unstable; urgency=low
 
   * Initial Shopify build.
