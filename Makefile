@@ -1,10 +1,13 @@
 SHELL := /bin/bash
 
+all:
+	@echo "*** Build this with apt-builder! ***"
+
 apt-builder-fetch:
 	true
 
 apt-builder-deps:
-	true
+	mk-build-deps
 
 apt-builder-build:
 	debuild -i -us -uc -b
